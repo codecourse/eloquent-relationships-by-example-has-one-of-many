@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('discussions.index', [
-        'discussions' => Discussion::latest()->get(),
+        'discussions' => Discussion::with('latestPost.user')->latest()->get(),
     ]);
 });

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Discussion extends Model
 {
     use HasFactory;
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function latestPost()
+    {
+        return $this->hasOne(Post::class)->latestOfMany();
+    }
 }
